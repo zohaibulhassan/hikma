@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+
+ RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} -d [OR]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ ^ [N] 
+    RewriteCond %{REQUEST_URI} (\.\w+$) [NC]
+    RewriteRule ^(.*)$ public/$1
+ 
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ server.php
+    
+    AddHandler application/x-httpd-php73 .php
+
+
+</IfModule>
